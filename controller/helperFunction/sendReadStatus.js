@@ -1,5 +1,6 @@
 import axios from "axios"
 const sendReadStatus = async (url, msg_id) => {
+    console.log(process.env.WHATSAPP_TOKEN)
     let read;
     try {
       read=await axios({
@@ -7,11 +8,12 @@ const sendReadStatus = async (url, msg_id) => {
             url: url,
             data: {
                 messaging_product: "whatsapp",
-                status: "read",
-                message_id: msg_id
-            }
+                message_id: msg_id,
+                status:"read",
+            },headers:{ "Content-Type": "application/json","Authorization":process.env.WHATSAPP_TOKEN }
+        // set response header
         }).then((result) => {
-          
+          console.log(result.data)
             if (result.data.success) {
                 console.log("Message sett as seen")
                 return true

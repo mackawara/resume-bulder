@@ -1,6 +1,6 @@
 const typeOfNotification = async (req, res, next) => {
     if (req.body.object) {
-        //  const changes=req.body.entry[0].changes[0]
+        
         if (
             req.body.entry &&
             req.body.entry[0].changes &&
